@@ -1,5 +1,5 @@
-mport java.util.Comparator;
-public class GFG {
+import java.util.Comparator;
+public class GroupAnagram {
 	// class for each word of duplicate array
 	static class Word {
 		String str; // to store word itself
@@ -18,12 +18,12 @@ public class GFG {
 	static class DupArray {
 		Word[] array; // Array of words
 		int size; // Size of array
-         // { "ab", "ba"},2
+                // { "ab", "ba", "a"},3
 		// constructor
 		public DupArray(String str[], int size)
 		{
 			this.size = size;
-			array = new Word[size]; // 2
+			array = new Word[size]; // 3
 
 			// One by one copy words from the
 			// given wordArray to dupArray
@@ -32,8 +32,9 @@ public class GFG {
 				// create a word Object with the
 				// str[i] as str and index as i
 				array[i] = new Word(str[i], i);
-               // ab,0
-               //ab,1
+                               // ab,0
+                               //ba,1
+			       //a,3
 			}
 		}
 	}
@@ -46,54 +47,54 @@ public class GFG {
 			return a.str.compareTo(b.str);
 		}
 	}
-     //printAnagramsTogether({ "ab", "ba"},2)
+     //printAnagramsTogether({"ab", "ba", "a"},3)
 	// Given a list of words in wordArr[],
-	static void printAnagramsTogether(String wordArr[],
-									int size)
+	static void printAnagramsTogether(String wordArr[],int size)
 	{
-        //{ "ab", "ba"} , 2
+                //{ "a" ,"ab", "ba"} , 3
 		// Step 1: Create a copy of all words present
 		// in given wordArr. The copy will also have
 		// original indexes of words
 		DupArray dupArray = new DupArray(wordArr, size);
-        //wordArr -0th - ab,0
-        //wordArr -1th - ba,1
+               //wordArr -0th - ab,0
+	       //wordArr -1st - ba,1
+               //wordArr -2nd - a,2
 
 		// Step 2: Iterate through all words in
 		// dupArray and sort individual words.
 		int i;
 		for (i = 0; i < size; ++i) {
-			char[] char_arr = dupArray.array[i].str.toCharArray(); //{ab}->{ba}
-            System.out.println(char_arr);
-			Arrays.sort(char_arr);//{ab}->{ab}
+			char[] char_arr = dupArray.array[i].str.toCharArray(); //varioud char array {ab}->{ba}->{a}
+                         System.out.println(char_arr);
+			 Arrays.sort(char_arr);//{ab}->{ab}->{a}
          
 			dupArray.array[i].str = new String(char_arr);
-          System.out.println("dupArray.array[i].str "+dupArray.array[i].str);
-          //dupArray 0th index -{ab}-> dupArray 1st index -{ab}
+                        System.out.println("dupArray.array[i].str "+dupArray.array[i].str);
+                        //dupArray 0th index -{ab}, 1st index-{ab}, 2nd index -{a}
         
 		}
 
-		// Step 3: Now sort the array of words in
-		// dupArray
+		// Step 3: Now sort the array of words in dupArray
 		Arrays.sort(dupArray.array, new compStr());
-        //dupArray{ab,ab}
+                //dupArray{ab,ab,a}
 
 		// Step 4: Now all words in dupArray are together,
 		// but these words are changed. Use the index
 		// member of word struct to get the corresponding
 		// original word
 		for (i = 0; i < size; ++i)
-			System.out.print(wordArr[dupArray.array[i].index] + " ");
-            //wordArray -{a,ab,ba}
+		//get the index from dupArray and form the element of wordArr
+		 System.out.print(wordArr[dupArray.array[i].index] + " ");
+                //wordArray -{a,ab,ba}
 	}
 
 	// Driver program to test above functions
 	public static void main(String args[])
 	{
-		//String wordArr[] = { "cat", "dog", "tac", "god", "act" };
-      String wordArr[] = { "ab", "ba" };
-		int size = wordArr.length; //2
+	//String wordArr[] = { "cat", "dog", "tac", "god", "act" };
+                String wordArr[] = { "ab", "ba" , "a" };
+		int size = wordArr.length; //3
 		printAnagramsTogether(wordArr, size);
-      //printAnagramsTogether({ "cat", "dog", "tac", "god", "act" },5)
+                //printAnagramsTogether({ "cat", "dog", "tac", "god", "act" },5)
 	}
 }
