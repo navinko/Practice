@@ -1,5 +1,5 @@
 mport java.util.Comparator;
-public class GFG {
+public class GroupAnagram {
 	// class for each word of duplicate array
 	static class Word {
 		String str; // to store word itself
@@ -48,8 +48,7 @@ public class GFG {
 	}
      //printAnagramsTogether({ "ab", "ba"},2)
 	// Given a list of words in wordArr[],
-	static void printAnagramsTogether(String wordArr[],
-									int size)
+	static void printAnagramsTogether(String wordArr[],int size)
 	{
         //{ "ab", "ba"} , 2
 		// Step 1: Create a copy of all words present
