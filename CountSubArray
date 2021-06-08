@@ -1,4 +1,4 @@
-?ckage Countsubarraywithequalzeroandone;
+package Countsubarraywithequalzeroandone;
 
 import java.util.HashMap;
 //The idea is assume 0s as -1 and 1 as 1 itself and calculate the sum . For equal no of 0s and 1s always this way sum wud be zero .so we need to check the element if is 0 add -1 if its is 1 add +1.
