@@ -1,7 +1,6 @@
 package Countsubarraywithequalzeroandone;
 
 import java.util.HashMap;
-
 //The idea is assume 0s as -1 and 1 as 1 itself and calculate the count for 0s 1s and 2s .
 //Initially take count0s,count1s and count2s  as 0 and calculate delta , delta10 and delta21 , from this generate key as delta21#delta10 and put in map with index =-1 and then process for each element..
 //Idea is to store delta vs index in map - if at two different index delta remain unchanged between 10 and 21 it means equal no of 1 or 0 being added also equal no od 2 and 1 being added.
@@ -9,9 +8,8 @@ import java.util.HashMap;
 public class LongestSubArrayOf0s1sand2s {
     public static void main(String as[]) {
         int arr[] = {0,1,0,2,0,1,0};// ans will be 8
-
-        int longestSubArray = longestSubArray(arr);
-       System.out.println("Longest sub arrays of 0s 1s and 2s  :"+longestSubArray);
+        int longestSubArraysOf0s1sAnd2s = longestSubArray(arr);
+       System.out.println("Longest sub arrays of 0s 1s and 2s  :"+longestSubArraysOf0s1sAnd2s);
     }
 
     private static int longestSubArray(int[] arr) {
