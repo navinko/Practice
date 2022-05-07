@@ -1,0 +1,35 @@
+ickage Kadanes_Algorithm;
+
+/**
+ * The idea is to start from begining and check max sum less then current sum and assign max to max sum . But the moment we realize we have current sum
+ * being negative we will stop the calculate till this element and discard the calculated sum by keeping max sum stored and moving the sum for forward elements
+ * Time complexity of BF is O(N^2) which can be optimized heavily using Kaden's algorithm to make find maximum in O(N)
+ * This algorithm is specially applicable when we have +ve and -ve elements in array , if there is only +ve elemts it's pretty simple we will calculate the entire arrays sum.
+ * (Q)- What if all elements in array are negative , find the logic.
+ */
+
+//*** Kadene's algorithm requires at least one one +ve element in array , if all -ve element then Kaden's algo do not workout.
+//Find max sum subArray where all the array elements are -ve numbers only.
+// One step solution for finding max sum sub array is find the smallest of all -ve nos.
+class MaxSumSubArray_Using_Kadens {
+    public static void main(String as[]) {
+        int arr[] = {-5, -4, -6, -3, -4, -1};
+        //We have to complete linear traversal in O(N)
+        int maxSum = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+           if(arr[i] > maxSum ){
+               maxSum=arr[i];
+           }
+        }
+        System.out.println("maxSum of sub array using Kaden's algo = " + maxSum);
+    }
+
+}
+/*
+maxSum once subarray started with i = 0 is 6
+maxSum once subarray started with i = 1 is 11
+maxSum once subarray started with i = 2 is 11
+maxSum once subarray started with i = 3 is 11
+maxSum once subarray started with i = 4 is 11
+maxSum once subarray started with i = 5 is 11
+*/
